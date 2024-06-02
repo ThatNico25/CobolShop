@@ -1,4 +1,4 @@
-# CobolShop
+# Cobol Shop
 Make a wishlist from a list of product and print the total when the client want to buy all the product. That was my first cobol project.
 
       
@@ -9,6 +9,7 @@ Make a wishlist from a list of product and print the total when the client want 
       *          total price when the client want to buy.
       * Tectonics: cobc
       ******************************************************************
+# Screenshop
 <div>
   <img src="/Screenshots/CaptureA.JPG" width="250" alt="Showcase A" title="Showcase A">
   <img src="/Screenshots/CaptureB.JPG" width="250" alt="Showcase B" title="Showcase B">
