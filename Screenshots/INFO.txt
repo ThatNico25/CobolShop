@@ -1,0 +1,3 @@
+Make a wishlist from a list of product and print the total when the client want to buy all the product. That was my first cobol project.
+
+Créer une list de produit qu'un utilisateur veut acheté et quand le client veut tous acheté les éléments de la liste, on imprime la total du coût.

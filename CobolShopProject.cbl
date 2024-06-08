@@ -1,47 +1,47 @@
       ******************************************************************
       * Author: Nicolas Poulin
-      * Date: 8/2/2024 
+      * Date: 5/26/2024 to ???
       * Purpose: Make a wishlist from a list of product and print the
       *          total price when the client want to buy.
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. CobolShopProject.
+       PROGRAM-ID. ChallengeCobol.
 
        ENVIRONMENT DIVISION.
            INPUT-OUTPUT SECTION.
            FILE-CONTROL.
 
            SELECT FILE-PRODUCT
-           ASSIGN TO "C:\Users\auser\Desktop\CobolProjects\ProjectA\prod
+           ASSIGN TO "C:\Users\mikoa\Desktop\CobolProjects\ProjectA\prod
       -    ".dat"
            ORGANISATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS IS EMP-PRODUCT-FILESTATUS.
 
            SELECT FILE-WISHLIST
-           ASSIGN TO "C:\Users\auser\Desktop\CobolProjects\ProjectA\wish
+           ASSIGN TO "C:\Users\mikoa\Desktop\CobolProjects\ProjectA\wish
       -    ".dat"
            ORGANISATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS IS EMP-WISHLIST-FILESTATUS.
 
            SELECT FILE-WISHLIST-READ
-           ASSIGN TO "C:\Users\auser\Desktop\CobolProjects\ProjectA\wish
+           ASSIGN TO "C:\Users\mikoa\Desktop\CobolProjects\ProjectA\wish
       -    ".dat"
            ORGANISATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS IS EMP-WISHLIST-READ-FILESTATUS.
 
            SELECT FILE-INVOICE
-           ASSIGN TO "C:\Users\auser\Desktop\CobolProjects\ProjectA\invo
+           ASSIGN TO "C:\Users\mikoa\Desktop\CobolProjects\ProjectA\invo
       -    ".dat"
            ORGANISATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS IS EMP-WISHLIST-READ-FILESTATUS.
 
            SELECT FILE-WISHLIST-TODELETE
-           ASSIGN TO "C:\Users\auser\Desktop\CobolProjects\ProjectA\wish
+           ASSIGN TO "C:\Users\mikoa\Desktop\CobolProjects\ProjectA\wish
       -    ".dat"
            ORGANISATION IS SEQUENTIAL
            FILE STATUS IS EMP-WISHLIST-READ-FILESTATUS.
@@ -165,10 +165,12 @@
                PERFORM GET-WISHLIST THRU READ-EXIT
                UNTIL EMP-W-END-OF-FILE
                CLOSE FILE-WISHLIST-READ
-
+               SUBTRACT 2 FROM EMP-WISHLIST-INDEX
+               
                IF EMP-INDEX = 0 THEN
                    DISPLAY "ALERT : The file is empty"
                ELSE
+                   
                    DISPLAY "Number of wishlist element : "
                    EMP-WISHLIST-INDEX
                    DISPLAY SPACE
@@ -207,12 +209,13 @@
                        DISPLAY " SIZE ERROR AT POS "EMP-WISHLIST-INDEX
                        CLOSE FILE-WISHLIST-READ
                    END-ADD
+               
                PERFORM VARYING INDEX-DISPLAY FROM 1 BY 1
                UNTIL INDEX-DISPLAY > 10
                MOVE FILE-PRODUCT-TABLE(INDEX-DISPLAY) TO COMPARE-ELEMENT
                    IF COMPARE-ELEMENT = SELECTED-OBJECT-READ
-                       DISPLAY "["EMP-WISHLIST-INDEX"] : "
-                       FILE-PRODUCT-TABLE(INDEX-DISPLAY)
+                     
+                       DISPLAY FILE-PRODUCT-TABLE(INDEX-DISPLAY)
 
                        MOVE FILE-PRODUCT-TABLE(INDEX-DISPLAY)(62:7)
                        TO PRICE
@@ -308,4 +311,4 @@
            WRITE SELECTED-DEFAULTTEXT BEFORE ADVANCING 1 LINE
            CLOSE FILE-WISHLIST-TODELETE.
 
-           END PROGRAM CobolShopProject.
+           END PROGRAM ChallengeCobol.
