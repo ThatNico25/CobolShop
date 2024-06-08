@@ -103,8 +103,8 @@
        01  INPUT-USER                          PIC X(9).
 
        01  PRICE                               PIC 9(4)V9(2).
-       01  TOTAL-PRICE                         PIC 9(4)V9(2) VALUE ZERO.
-       01  TOTAL-PRICE-PRINT                   PIC $$$$9.99.
+       01  TOTAL-PRICE                         PIC 9(5)V9(2) VALUE ZERO.
+       01  TOTAL-PRICE-PRINT                   PIC $$$$$9.99.
        01  WS-EOF-SWITCH                       PIC X       VALUE 'N'.
 
        PROCEDURE DIVISION.
